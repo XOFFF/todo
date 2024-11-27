@@ -1,0 +1,185 @@
+:root {
+  --grey: #a0a0a0;
+  --rounded: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+.header .title {
+  display: flex;
+}
+
+.header .title input {
+  margin-left: 0.5rem;
+  flex: 1 1 0%;
+  min-width: 0;
+  max-width: 200px;
+}
+
+.header .title,
+.header .title input {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.header .title input {
+  width: fit-content;
+}
+
+.main-box,
+.header {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  display: block;
+  align-items: center;
+  width: fit-content;
+  /* //////////??????????????????????????? */
+  min-width: 50%;
+}
+
+.header {
+  top: 10%;
+}
+
+.main-box {
+  height: fit-content;
+  justify-content: space-between;
+  gap: 10px;
+  /* margin-top: 30%; */
+  margin-bottom: fit-content;
+  border-radius: var(--rounded);
+  background: yellow;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+}
+
+.main-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 15px 15% 15px;
+  /* padding: 15px 15px; */
+  border-radius: var(--rounded);
+}
+
+.tasks-list:empty {
+  visibility: hidden;
+  padding: 0;
+}
+
+input:not([type='checkbox']),
+button {
+  appearance: non;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: initial;
+}
+
+input[type='checkbox'] {
+  cursor: pointer;
+}
+
+#user-input {
+  background: #fff;
+  display: run-in;
+  width: 100%;
+  border-radius: var(--rounded);
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  padding: 15px 0 10px 10px;
+  resize: none;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1) inset;
+}
+
+#user-input:focus-within {
+  outline: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Not allow to write html or script inside textarea */
+#user-input:valid {
+  display: block;
+}
+
+/* input[type='checkbox'] {
+  cursor: pointer;
+} */
+
+.btn,
+.main-header input[type='submit'] {
+  cursor: pointer;
+  padding: 15px 15px;
+  border: none;
+  border-radius: var(--rounded);
+  background: #fff;
+  font-weight: bold;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.btn:not(input[type='submit']):hover {
+  opacity: 0.7;
+  box-shadow: none;
+}
+
+#add-task-btn:hover {
+  background: rgb(248, 248, 248);
+}
+
+.edit-btn {
+  background: rgba(13, 218, 13, 0.5);
+}
+
+.delete-btn {
+  background: rgba(255, 0, 0, 0.5);
+}
+
+.tasks-list {
+  display: grid;
+  gap: 15px;
+  max-height: 60vh;
+  border-radius: var(--rounded);
+  background: rgb(245, 245, 69);
+  /* margin: 0 10% 15px; */
+  padding: 15px 5%;
+  overflow: auto;
+  /* overflow-y: scroll; */
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(206, 206, 59) transparent;
+}
+
+.task {
+  position: relative;
+  display: grid;
+  background: #fff;
+  align-items: center;
+  border-radius: var(--rounded);
+  gap: 15px;
+  padding: 10px 10px;
+  grid-template-columns: 1fr 8fr 2fr 2fr;
+}
+
+.completed {
+  color: var(--grey);
+  text-decoration: line-through;
+}
+
+@media (max-width: 520px) {
+  /* *{
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+  } */
+
+  .tasks-list {
+    margin: 0;
+  }
+}
