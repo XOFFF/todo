@@ -1,3 +1,7 @@
+const userInput = document.querySelector('#user-input');
+const addBtn = document.querySelector('#add-task-btn');
+const tasksHolder = document.querySelector('.tasks-list');
+
 window.addEventListener('load', () => {
   todos = JSON.parse(localStorage.getItem('todos')) || [];
   nameInput = document.querySelector('#name');
@@ -5,10 +9,10 @@ window.addEventListener('load', () => {
 
   const userName = localStorage.getItem('userName') || '';
 
-  nameInput.value = userName.trim();
+  nameInput.value = userName;
 
   nameInput.addEventListener('change', (e) => {
-    localStorage.setItem('userName', e.target.value);
+    localStorage.setItem('userName', e.target.value.trim());
     addTasks();
   });
 
@@ -16,8 +20,8 @@ window.addEventListener('load', () => {
     e.preventDefault();
 
     const todo = {
-      owner: nameInput.value,
-      content: e.target.elements.content.value,
+      owner: nameInput.value.trim(),
+      content: e.target.elements.content.value.trim(),
       completed: false,
       createdAt: new Date().getTime(),
     };
@@ -29,21 +33,18 @@ window.addEventListener('load', () => {
     e.target.reset();
 
     addTasks();
+    userInput.value = '';
+    scrollDown(tasksHolder);
   });
   addTasks();
 });
 
-const userInput = document.querySelector('#user-input');
-const addBtn = document.querySelector('#add-task-btn');
-
 function addTasks() {
-  const tasksHolder = document.querySelector('.tasks-list');
-
   tasksHolder.innerHTML = '';
 
   todos.forEach((todo) => {
     // Show only tasks for the specific onwers name
-    if (todo.owner != nameInput.value) return;
+    if (todo.owner != nameInput.value.trim()) return;
 
     const task = document.createElement('div');
     const checkbox = task.appendChild(document.createElement('input'));
@@ -85,7 +86,6 @@ function addTasks() {
     }
     // Change completed tasks in localStorage
     checkbox.addEventListener('change', (e) => {
-      console.log('CheckBox is', checkbox.checked);
       todo.completed = e.target.checked;
       localStorage.setItem('todos', JSON.stringify(todos));
       // text.classList.toggle('completed');
@@ -98,8 +98,6 @@ function addTasks() {
       addTasks();
     });
   });
-
-  userInput.value = '';
 }
 
 const initEditBtn = (editBtn, text, todo) => {
@@ -108,9 +106,9 @@ const initEditBtn = (editBtn, text, todo) => {
     text.focus();
     text.addEventListener('blur', (e) => {
       text.setAttribute('readonly', true);
-      todo.content = text.value;
+      todo.content = text.value.trim();
       localStorage.setItem('todos', JSON.stringify(todos));
-      // addTasks();
+      addTasks();
     });
   };
 };
@@ -121,4 +119,11 @@ const initDeleteBtn = (deleteBtn, todo) => {
     localStorage.setItem('todos', JSON.stringify(todos));
     deleteBtn.parentNode.remove();
   };
+};
+
+const scrollDown = (tasksHolder) => {
+  tasksHolder.scrollTo({
+    top: tasksHolder.scrollHeight,
+    behavior: 'smooth',
+  });
 };
