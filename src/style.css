@@ -1,7 +1,16 @@
 :root {
+  --main-box-color: #ffff00;
+  --main-box-back-color: #f5f545;
   --grey: #a0a0a0;
   --rounded: 20px;
   --gap-basic: 15px;
+  --gap-task: 4px;
+  --back-color: #fcfdf6;
+  --task-color: var(--back-color);
+  --user-input-color: #fff;
+  --btn-add-task-color: #fff;
+  --btn-edit-color: var(--main-box-back-color);
+  --btn-delete-color: var(--main-box-back-color);
 }
 
 * {
@@ -12,6 +21,12 @@
   color: #000000;
 }
 
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--back-color);
+}
+
 .content {
   position: relative;
   display: flex;
@@ -20,13 +35,12 @@
   margin: auto;
   height: fit-content;
   margin-top: 10%;
-  gap: var(--gap-basic);
+  gap: 6px;
   max-width: 700px;
 }
 
 .header {
   align-items: center;
-  /* margin-left: 15%; */
   justify-content: center;
   margin: auto;
   width: fit-content;
@@ -37,11 +51,9 @@
 }
 
 .header .title input {
-  margin-left: 0.5rem;
-  flex: 1 1 0%;
   min-width: 0;
-  field-sizing: content;
   width: fit-content;
+  field-sizing: content;
 }
 
 .header .title,
@@ -51,24 +63,13 @@
 }
 
 .main-box {
-  /* position: fixed;
-  inset: 0;
-  margin: auto;
-  display: block;
-  align-items: center;
-  width: fit-content;
-  height: fit-content;
-  justify-content: space-between; */
-  /* margin-top: 30%; */
-  /* margin: 0 15%; */
-
   margin: auto;
   max-width: 700px;
   padding: var(--gap-basic);
   gap: 10px;
   margin-bottom: fit-content;
   border-radius: var(--rounded);
-  background: yellow;
+  background: var(--main-box-color);
   box-shadow: 0 var(--gap-basic) 25px rgba(0, 0, 0, 0.2);
 }
 
@@ -90,7 +91,7 @@
 
 input:not([type='checkbox']),
 button {
-  appearance: non;
+  appearance: none;
   border: none;
   outline: none;
   background: none;
@@ -98,7 +99,22 @@ button {
 }
 
 input[type='checkbox'] {
+  flex-shrink: 0;
+  -webkit-appearance: none; /* Reset default checkbox styles */
+  appearance: none;
+  margin: 0 calc(8px - var(--gap-task)) 0 8px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--main-box-back-color);
+  border-radius: 50%; /* Make it circular */
+  background-color: var(--back-color);
   cursor: pointer;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+input[type='checkbox']:checked {
+  background-color: var(--main-box-back-color);
 }
 
 #user-input {
@@ -108,8 +124,8 @@ input[type='checkbox'] {
   border-radius: var(--rounded);
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
+  border-radius: calc(var(--rounded) + 4px);
   padding: var(--gap-basic);
-  /* justify-content: center; */
   resize: none;
   background: #fff;
   color: #000000;
@@ -118,85 +134,70 @@ input[type='checkbox'] {
 }
 
 #user-input:focus-within {
-  /* outline: 2px solid rgba(0, 0, 0, 0.1); */
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1) inset;
 }
 
-/* Not allow to write html or script inside textarea */
 #user-input:valid {
   display: block;
 }
 
-/* input[type='checkbox'] {
-  cursor: pointer;
-} */
-
 .btn {
-  display: inline-block;
+  display: block;
+  box-sizing: border-box;
+  flex-shrink: 0;
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  padding: calc(var(--gap-basic) - 2px);
+  height: 40px;
+  width: 40px;
   border: none;
   border-radius: 50%;
-  /* border-radius: var(--rounded); */
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  background: var(--main-box-back-color);
   transition: all 0.3s ease;
 }
 
-.main-header input[type='submit'] {
-  /* position: absolute; */
-  /* right: 25px; */
-  /* margin-bottom: var(--gap-basic); */
-  position: relative;
-  display: flex;
-  margin-right: 10px;
-  background: #fff;
+#add-task-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--rounded + 4px);
+  border: 4px solid;
+  border-color: var(--btn-add-task-color);
 }
 
-.btn:not(input[type='submit']):hover {
-  opacity: 0.7;
-  box-shadow: none;
+.btn:hover {
+  background: var(--main-box-color);
+}
+
+#add-task-btn {
+  background: var(--main-box-color);
 }
 
 #add-task-btn:hover {
-  background: rgb(248, 248, 248);
-}
-
-.edit-btn {
-  background: rgba(13, 218, 13, 0.5);
-}
-
-.delete-btn {
-  background: rgba(255, 0, 0, 0.5);
+  background: var(--main-box-back-color);
 }
 
 .tasks-list {
-  /* display: grid; */
   display: flex;
   flex-direction: column;
-
-  gap: var(--gap-basic);
+  gap: 8px;
   max-height: 60vh;
   border-radius: var(--rounded);
-  background: rgb(245, 245, 69);
+  background: var(--main-box-back-color);
   padding: var(--gap-basic);
-  overflow: auto;
   overflow-x: hidden;
   overflow-y: overlay;
   scrollbar-width: none;
-  scrollbar-color: rgb(206, 206, 59) transparent;
 }
 
 .task {
   position: relative;
-  display: grid;
-  background: #fff;
+  display: flex;
   align-items: center;
-  border-radius: var(--rounded);
-  gap: 5px;
-  padding: 10px 10px;
-  grid-template-columns: 1fr 8fr 1fr 1fr;
+  justify-content: space-between;
+  background: var(--task-color);
+  border-radius: calc(var(--rounded) + 4px);
+  gap: var(--gap-task);
+  padding: 4px 4px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -211,33 +212,43 @@ input[type='checkbox'] {
   text-decoration: line-through;
 }
 
-@media (max-width: 450px) {
-  /* *{
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 0;
-  } */
+.btn-div {
+  display: flex;
+  gap: 8px;
+}
 
-  /* .tasks-list {
-    margin: 0;
-  } */
-
-  .content{
-    position: absolute;
-    bottom: 0;
+@media (max-width: 768px) {
+  .content {
+    position: fixed;
     margin-top: auto;
-    margin-bottom: 10vh;
-  }
-
-  .main-header{
     margin-bottom: 0;
   }
 
-  .main-box{
+  .btn {
+    background: var(--main-box-back-color);
+  }
+
+  #add-task-btn:hover {
+    background: var(--main-box-color);
+  }
+
+  .main-header {
+    margin-bottom: 0;
+  }
+
+  .tasks-list {
+    max-height: 70vh;
+  }
+
+  .main-box {
     display: flex;
     flex-direction: column-reverse;
     margin: 0;
-    /* margin: 10vh 0 0 0; */
-    /* max-height: 70%; */
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 8px;
+    border-radius: var(--rounded) var(--rounded) 0 0;
   }
 }

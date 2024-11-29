@@ -18,6 +18,8 @@ window.addEventListener('load', () => {
 
   newTodoForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    // Rerturn whether input is empty
+    if (userInput.value.trim() === '') return;
 
     const todo = {
       owner: nameInput.value.trim(),
@@ -44,7 +46,7 @@ function addTasks() {
 
   todos.forEach((todo) => {
     // Show only tasks for the specific onwers name
-    if (todo.owner != nameInput.value.trim()) return;
+    if (todo.owner !== nameInput.value.trim()) return;
 
     const task = document.createElement('div');
     const checkbox = task.appendChild(document.createElement('input'));
