@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
 
   nameInput.value = userName;
 
-  nameInput.addEventListener('change', (e) => {
+  nameInput.addEventListener('input', (e) => {
     localStorage.setItem('userName', e.target.value.trim());
     addTasks();
   });
