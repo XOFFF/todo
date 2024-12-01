@@ -217,6 +217,10 @@ input[type='checkbox']:checked {
     background: var(--main-box-back-color);
   }
 
+  #add-task-btn {
+    transform: rotate(180deg);
+  }
+
   #add-task-btn:hover {
     background: var(--main-box-color);
   }

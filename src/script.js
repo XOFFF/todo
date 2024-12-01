@@ -68,14 +68,14 @@ function addTasks() {
 
     // Edit btn initialization
     editBtn.type = 'button';
-    editBtn.className = 'btn edit-btn';
-    editBtn.innerText = '✏️';
+    editBtn.className = 'btn edit-btn material-symbols-outlined';
+    editBtn.innerText = 'edit';
     initEditBtn(editBtn, text, todo);
 
     // Delete btn initialization
     deleteBtn.type = 'button';
-    deleteBtn.className = 'btn delete-btn';
-    deleteBtn.innerText = '❌';
+    deleteBtn.className = 'btn delete-btn material-symbols-rounded';
+    deleteBtn.innerText = 'close';
     initDeleteBtn(deleteBtn, todo);
 
     // Final changes to the list
