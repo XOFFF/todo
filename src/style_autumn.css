@@ -1,0 +1,48 @@
+:root {
+	--main-box-color: rgba(255, 174, 0, 0.5);
+	--main-box-back-color: rgba(255, 174, 0, 0.2);
+	--grey: #a0a0a0;
+	--dark-grey: #2e2e2e;
+	--rounded: 28px;
+	--gap-basic: 15px;
+	--gap-task: 4px;
+	--back-color: #fcfdf6;
+	--task-color: #fff;
+	--user-input-color: var(--dark-grey);
+	--user-input-placeholder-color: rgb(199, 196, 196);
+	--user-input-back-color: rgba(255, 255, 255, 0.95);
+}
+
+body {
+	background-image: url('images/autumn_pattern.png');
+}
+
+.main-box {
+	background: rgba(255, 255, 255, 0.5);
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
+	box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+}
+
+#user-input {
+	background: var(--user-input-back-color);
+	color: var(--user-input-color);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+#user-input::placeholder {
+	color: var(--user-input-placeholder-color);
+}
+
+.tasks-list {
+	padding-top: 0px;
+	background: none;
+}
+
+.task {
+	background: var(--task-color);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}

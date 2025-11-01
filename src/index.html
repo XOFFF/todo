@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1"
-    />
-    <title>Todo list</title>
-    <!-- Linking Google fonts for icons -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,300,0,0&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="content">
-      <div class="header">
-        <input
-          type="text"
-          id="name"
-          placeholder="Name here"
-          autocomplete="off"
-          contenteditable
-        />
-      </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1"
+		/>
+		<title>Todo list</title>
+		<!-- Linking Google fonts for icons -->
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,300,0,0&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0"
+		/>
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="style_autumn.css" />
+	</head>
+	<body>
+		<div class="content">
+			<div class="main-box">
+				<div class="header">
+					<input
+						type="text"
+						id="name"
+						placeholder="Name here"
+						autocomplete="off"
+						contenteditable
+					/>
+				</div>
+				<form id="'new-todo-form" class="main-header">
+					<input
+						type="text"
+						name="content"
+						id="user-input"
+						placeholder="To do..."
+					/>
+					<button
+						type="submit"
+						id="add-task-btn"
+						class="btn add material-symbols-rounded"
+					>
+						arrow_downward
+					</button>
+				</form>
+				<br />
+				<div class="tasks-list"></div>
+			</div>
+		</div>
 
-      <div class="main-box">
-        <form id="'new-todo-form" class="main-header">
-          <input
-            type="text"
-            name="content"
-            id="user-input"
-            placeholder="To do..."
-          />
-          <button
-            type="submit"
-            id="add-task-btn"
-            class="btn add material-symbols-rounded"
-          >
-            arrow_downward
-          </button>
-        </form>
-
-        <div class="tasks-list"></div>
-      </div>
-    </div>
-
-    <script src="script.js"></script>
-  </body>
+		<script src="script.js"></script>
+	</body>
 </html>
