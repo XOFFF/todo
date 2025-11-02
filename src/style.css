@@ -157,7 +157,7 @@ input[type='checkbox']:checked {
 	right: 4px;
 }
 
-.btn:hover {
+.btn:active {
 	background: var(--main-box-color);
 }
 
@@ -165,7 +165,7 @@ input[type='checkbox']:checked {
 	background: var(--main-box-color);
 }
 
-#add-task-btn:hover {
+#add-task-btn:active {
 	background: var(--main-box-back-color);
 }
 
@@ -238,7 +238,7 @@ input[type='checkbox']:checked {
 		transform: rotate(180deg);
 	}
 
-	#add-task-btn:hover {
+	#add-task-btn:active {
 		background: var(--main-box-color);
 	}
 
