@@ -81,6 +81,20 @@ function addTasks() {
 		deleteBtn.innerText = 'close';
 		initDeleteBtn(deleteBtn, todo);
 
+		// Task text edit initialization
+		task.addEventListener('touchstart', (e) => {
+			const elem = e.target;
+			if (
+				(!elem.classList.contains('btn') && elem !== checkbox) ||
+				elem === text
+			) {
+				editFunc(text, todo);
+			}
+		});
+		task.onclick = () => {
+			editFunc(text, todo);
+		};
+
 		// Final changes to the list
 		tasksHolder.style.visibility = 'visible'; // Later on count tasks
 		tasksHolder.appendChild(task);
@@ -109,13 +123,18 @@ const initEditBtn = (editBtn, text, todo) => {
 	editBtn.onclick = () => {
 		text.removeAttribute('readonly');
 		text.focus();
-		text.addEventListener('blur', (e) => {
-			text.setAttribute('readonly', true);
-			todo.content = text.value.trim();
-			localStorage.setItem('todos', JSON.stringify(todos));
-			addTasks();
-		});
+		editFunc(text, todo);
 	};
+};
+
+const editFunc = (text, todo) => {
+	text.removeAttribute('readonly');
+	text.focus();
+	text.addEventListener('blur', (e) => {
+		text.setAttribute('readonly', true);
+		todo.content = text.value.trim();
+		localStorage.setItem('todos', JSON.stringify(todos));
+	});
 };
 
 const initDeleteBtn = (deleteBtn, todo) => {
