@@ -179,8 +179,10 @@ input[type='checkbox']:checked {
 	overflow-x: hidden;
 	overflow-y: overlay;
 	scrollbar-width: none;
-	padding: var(--gap-basic);
+	padding: 0 var(--gap-basic);
 	padding-top: 0;
+	margin-bottom: var(--gap-basic);
+	padding-bottom: var(--gap-basic);
 }
 
 .task {
@@ -242,11 +244,14 @@ input[type='checkbox']:checked {
 
 	.main-header {
 		order: 0;
+		margin-bottom: 0;
+		margin-top: var(--gap-basic);
 	}
 
 	.tasks-list {
 		max-height: 70vh;
 		order: 1;
+		margin-bottom: 0;
 	}
 
 	.main-box {
